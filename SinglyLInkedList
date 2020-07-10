@@ -1,0 +1,55 @@
+# Singly Linked List (with heaad and tail) implemented with dictionary in Python
+def create():
+    sll=dict()
+    sll['head']=None
+    sll['tail']='e'
+    return  sll
+
+def add_first(sll,e):
+
+    sll[e]=sll['head']
+    sll['head']=e
+    if sll['tail'] =='e':
+        sll['tail']=e
+
+    return  sll
+
+
+def add_last(sll,e):
+    if sll['tail']=='e':
+        add_first(sll,e)
+    else:
+        x=sll['tail']
+        sll[e]=sll[x]
+        sll[x]=e
+        sll['tail']=e
+    return sll
+
+
+def print_elem(sll):
+    curr='head'
+    while curr!=None:
+        next=sll[curr]
+        print(curr,"--->",next)
+        curr=next
+
+def delete_fist(sll):
+    x=sll['head']
+    sll['head']=sll[x]
+    del sll[x]
+    return  x
+
+
+
+
+sll=create()
+sll=add_first(sll,'MSP')
+sll=add_first(sll,'ATL')
+sll=add_first(sll,'BOS')
+sll=add_last(sll,'MIA')
+print_elem(sll)
+print()
+x=delete_fist(sll)
+print_elem(sll)
+print("element delete",x)
+print(sll)
